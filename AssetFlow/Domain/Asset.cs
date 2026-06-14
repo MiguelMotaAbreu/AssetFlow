@@ -1,29 +1,26 @@
 public class Asset
 {
-    public Asset(string name, string status, string bp)
+    public Asset(string name, string bp)
     {
-        Id = Guid.NewGuid();
-        Status = status;
-        Name = name;
-        Location = "Estoque";
-        BP = bp;
-
-        // Validações básicas para garantir que os campos essenciais não sejam nulos ou vazios
-
         if (string.IsNullOrEmpty(name))
         {
             throw new ArgumentException("O nome do ativo não pode ser vazio.");
-        }
-
-        if (string.IsNullOrEmpty(status))
-        {
-            throw new ArgumentException("O status do ativo não pode ser vazio.");
         }
 
         if (string.IsNullOrEmpty(bp))
         {
             throw new ArgumentException("O BP do ativo não pode ser vazio.");
         }
+
+        // ATT - SERÁ QUE FAZ SENTIDO ADQUIRIR UM COMPUTADOR QUE ESTEJA QUEBRADO?
+        Id = Guid.NewGuid();
+        Status = "Disponivel";
+        Name = name;
+        Location = "Estoque";
+        BP = bp;
+
+        // Validações básicas para garantir que os campos essenciais não sejam nulos ou vazios
+        // ATT - AS VALIDAÇÕES DEVEM SER FEITAS ANTES DA ATRIBUIÇÃO PARA EVITAR FAIL FAST, EVITANDO QUE VALORES NULOS PASSEM DE PRIMEIRA
     }
     public Guid Id { get; private set; }
     // O Id servirá para identificar os ativos somente dentro do sistema, para busca e consulta dos dados, será utilizado o BP (Bem Patrimonial)
@@ -37,15 +34,17 @@ public class Asset
     // O nome do ativo, para facilitar a diferenciação entre ativos que estejam na mesma sala
 
     //Método para colocar um ativo em manutenção
-    public void ColocarEmManutencao(string name, string status, string bp)
+
+    //ATT - FAZ SENTIDO SOLICITAR ESSES TRÊS PARÂMETROS ABAIXO? COMO EU SÓ PODERIA COLOCAR EM MANUTENCAO UM ATIVO QUE ESTIVESSE DISPONÍVEL, NÃO FAZ TANTO SENTIDO SOLICITAR A ENTRADA DOS STATUS TAMBÉM. MUITO MENOS OS OUTROS DOIS PARÂMETROS QUE NEM ESTÃO SENDO UTILIZADOS
+    public void ColocarEmManutencao()
     {
         //Verificação que impede o direcionamento de um ativo para manutenção se este estiver em uso.
-        if (status != "Alocado")
+        if (Status == "Disponivel" || Status == "Quebrado")
         {
-            Status = "EmManutencao";
+           Status = "EmManutencao"; 
         } else
         {
-            throw new InvalidOperationException("O computador não pode ser colocado em manutenção pois está em uso. Primeiro, retire-o.");
+            throw new InvalidOperationException("O ativo não pode ser colocado em manutenção com este status.");
         }
     }
 }
