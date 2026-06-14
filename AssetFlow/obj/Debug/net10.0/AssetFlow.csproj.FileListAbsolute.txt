@@ -1,0 +1,15 @@
+c:\dev\AssetFlow\bin\Debug\net10.0\AssetFlow.exe
+c:\dev\AssetFlow\bin\Debug\net10.0\AssetFlow.deps.json
+c:\dev\AssetFlow\bin\Debug\net10.0\AssetFlow.runtimeconfig.json
+c:\dev\AssetFlow\bin\Debug\net10.0\AssetFlow.dll
+c:\dev\AssetFlow\bin\Debug\net10.0\AssetFlow.pdb
+c:\dev\AssetFlow\obj\Debug\net10.0\AssetFlow.GeneratedMSBuildEditorConfig.editorconfig
+c:\dev\AssetFlow\obj\Debug\net10.0\AssetFlow.AssemblyInfoInputs.cache
+c:\dev\AssetFlow\obj\Debug\net10.0\AssetFlow.AssemblyInfo.cs
+c:\dev\AssetFlow\obj\Debug\net10.0\AssetFlow.csproj.CoreCompileInputs.cache
+c:\dev\AssetFlow\obj\Debug\net10.0\AssetFlow.sourcelink.json
+c:\dev\AssetFlow\obj\Debug\net10.0\AssetFlow.dll
+c:\dev\AssetFlow\obj\Debug\net10.0\refint\AssetFlow.dll
+c:\dev\AssetFlow\obj\Debug\net10.0\AssetFlow.pdb
+c:\dev\AssetFlow\obj\Debug\net10.0\AssetFlow.genruntimeconfig.cache
+c:\dev\AssetFlow\obj\Debug\net10.0\ref\AssetFlow.dll

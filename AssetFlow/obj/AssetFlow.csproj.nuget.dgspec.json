@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\dev\\AssetFlow\\AssetFlow.csproj": {}
+    "c:\\dev\\AssetFlow\\AssetFlow.csproj": {}
   },
   "projects": {
-    "C:\\dev\\AssetFlow\\AssetFlow.csproj": {
+    "c:\\dev\\AssetFlow\\AssetFlow.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\dev\\AssetFlow\\AssetFlow.csproj",
+        "projectUniqueName": "c:\\dev\\AssetFlow\\AssetFlow.csproj",
         "projectName": "AssetFlow",
-        "projectPath": "C:\\dev\\AssetFlow\\AssetFlow.csproj",
+        "projectPath": "c:\\dev\\AssetFlow\\AssetFlow.csproj",
         "packagesPath": "C:\\Users\\Miguel\\.nuget\\packages\\",
-        "outputPath": "C:\\dev\\AssetFlow\\obj\\",
+        "outputPath": "c:\\dev\\AssetFlow\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Miguel\\AppData\\Roaming\\NuGet\\NuGet.Config"
