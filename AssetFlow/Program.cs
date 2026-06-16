@@ -8,7 +8,7 @@ var repositorioAtivos = new AssetRepository();
 // 2 - Listar Ativos
 // 3 - Sair
 
-void Menu(int resp)
+void Menu() // Retirada de chamadas desnecessárias do método dentro dele mesmo para evitar stackoverflow
 {
     Console.Clear();
     Console.WriteLine("--------------------");
@@ -21,9 +21,8 @@ void Menu(int resp)
     Console.WriteLine("--------------------");
 
     int.TryParse(Console.ReadLine(), out int respNum);
-    resp = respNum;
 
-    switch (resp)
+    switch (respNum)
     {
         case 1:
             Console.Clear();
@@ -32,9 +31,9 @@ void Menu(int resp)
             Console.WriteLine("");
             Console.Write("Digite o número de patrimônio do ativo a ser registrado");
             string bp = Console.ReadLine();
-            var ativo = new Asset(name, bp);
             try
             {
+                var ativo = new Asset(name, bp); // Correção para impedir um disparar da exceção e encerramento do programa em caso de preenchimento vazio por parte do usuário.
                 repositorioAtivos.Adicionar(ativo);
                 Console.WriteLine("Ativo registrado no repositório com sucesso!");
             }
@@ -48,7 +47,6 @@ void Menu(int resp)
 
             Console.WriteLine("Encerrando função e retornando ao menu.");
             Thread.Sleep(5000);
-            Menu(0);
             break;
         case 2:
             var listaAtivos = repositorioAtivos.ObterTodos();
@@ -56,7 +54,6 @@ void Menu(int resp)
             {
                 Console.WriteLine("Lista de ativos vazia... Encerrando função e retornando ao menu.");
                 Thread.Sleep(5000);
-                Menu(0);
             }
             foreach(Asset ativoL in listaAtivos)
             {
@@ -70,7 +67,6 @@ void Menu(int resp)
             Console.ReadKey();
             Console.WriteLine("Encerrando função e retornando ao menu.");
             Thread.Sleep(5000);
-            Menu(0);
             break;
         case 3:
             Console.WriteLine("Encerrando aplicação...");
@@ -80,15 +76,13 @@ void Menu(int resp)
         default:
             Console.WriteLine("Entrada incorreta não detectada, reiniciando menu.");
             Thread.Sleep(5000);
-            Menu(0);
             break;
     }
 }
-
-int resposta = 0;
-while (resposta != 3)
+bool ok = true;
+while (ok)
 {
-    Menu(resposta);
+    Menu();
 }
 
 // Opção 1 da Aplicação, Cadastrar Ativo:
