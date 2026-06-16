@@ -2,6 +2,7 @@ public class Asset
 {
     public Asset(string name, string bp)
     {
+        // Validações básicas para garantir que os campos essenciais não sejam nulos ou vazios
         if (string.IsNullOrEmpty(name))
         {
             throw new ArgumentException("O nome do ativo não pode ser vazio.");
@@ -11,16 +12,11 @@ public class Asset
         {
             throw new ArgumentException("O BP do ativo não pode ser vazio.");
         }
-
-        // ATT - SERÁ QUE FAZ SENTIDO ADQUIRIR UM COMPUTADOR QUE ESTEJA QUEBRADO?
         Id = Guid.NewGuid();
         Status = "Disponivel";
         Name = name;
         Location = "Estoque";
         BP = bp;
-
-        // Validações básicas para garantir que os campos essenciais não sejam nulos ou vazios
-        // ATT - AS VALIDAÇÕES DEVEM SER FEITAS ANTES DA ATRIBUIÇÃO PARA EVITAR FAIL FAST, EVITANDO QUE VALORES NULOS PASSEM DE PRIMEIRA
     }
     public Guid Id { get; private set; }
     // O Id servirá para identificar os ativos somente dentro do sistema, para busca e consulta dos dados, será utilizado o BP (Bem Patrimonial)
@@ -32,10 +28,7 @@ public class Asset
     // O status do ativo, se ele está disponível, em manutenção, etc.
     public string Name { get; private set; }
     // O nome do ativo, para facilitar a diferenciação entre ativos que estejam na mesma sala
-
     //Método para colocar um ativo em manutenção
-
-    //ATT - FAZ SENTIDO SOLICITAR ESSES TRÊS PARÂMETROS ABAIXO? COMO EU SÓ PODERIA COLOCAR EM MANUTENCAO UM ATIVO QUE ESTIVESSE DISPONÍVEL, NÃO FAZ TANTO SENTIDO SOLICITAR A ENTRADA DOS STATUS TAMBÉM. MUITO MENOS OS OUTROS DOIS PARÂMETROS QUE NEM ESTÃO SENDO UTILIZADOS
     public void ColocarEmManutencao()
     {
         //Verificação que impede o direcionamento de um ativo para manutenção se este estiver em uso.

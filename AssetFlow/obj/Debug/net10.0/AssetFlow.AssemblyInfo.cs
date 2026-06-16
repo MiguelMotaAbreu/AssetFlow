@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AssetFlow")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7876405138c9f2f003fbce79746fcdbb898d3c85")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6b2b0c09b78a6cf5b4fb9eadf066a59bdb18f4cf")]
 [assembly: System.Reflection.AssemblyProductAttribute("AssetFlow")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AssetFlow")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
