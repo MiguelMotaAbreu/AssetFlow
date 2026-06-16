@@ -1,14 +1,8 @@
-﻿// Instanciar AssetRepository como um Objeto
-using System.ComponentModel;
+﻿using System.ComponentModel;
 
 var repositorioAtivos = new AssetRepository();
 
-// Menu interativo da aplicação com While:
-// 1 - Cadastrar Ativo
-// 2 - Listar Ativos
-// 3 - Sair
-
-void Menu() // Retirada de chamadas desnecessárias do método dentro dele mesmo para evitar stackoverflow
+void Menu()
 {
     Console.Clear();
     Console.WriteLine("--------------------");
@@ -17,8 +11,10 @@ void Menu() // Retirada de chamadas desnecessárias do método dentro dele mesmo
 
     Console.WriteLine("1 - Cadastrar Ativo");
     Console.WriteLine("2 - Listar Ativos");
-    Console.WriteLine("3 - Sair");
-    Console.WriteLine("--------------------");
+    Console.WriteLine("3 - Colocar Ativo em Manutenção");
+    Console.WriteLine("4 - Sair");
+    //Adicionar Opção de Envio Para Manutenção utilizando o metódo ColocarEmManutencao()
+    Console.WriteLine("-------------------------------");
 
     int.TryParse(Console.ReadLine(), out int respNum);
 
@@ -28,12 +24,11 @@ void Menu() // Retirada de chamadas desnecessárias do método dentro dele mesmo
             Console.Clear();
             Console.Write("Digite o nome do ativo a ser registrado: ");
             string name = Console.ReadLine();
-            Console.WriteLine("");
-            Console.Write("Digite o número de patrimônio do ativo a ser registrado");
+            Console.Write("Digite o número de patrimônio do ativo a ser registrado: ");
             string bp = Console.ReadLine();
             try
             {
-                var ativo = new Asset(name, bp); // Correção para impedir um disparar da exceção e encerramento do programa em caso de preenchimento vazio por parte do usuário.
+                var ativo = new Asset(name, bp);
                 repositorioAtivos.Adicionar(ativo);
                 Console.WriteLine("Ativo registrado no repositório com sucesso!");
             }
@@ -49,6 +44,7 @@ void Menu() // Retirada de chamadas desnecessárias do método dentro dele mesmo
             Thread.Sleep(5000);
             break;
         case 2:
+            Console.Clear();
             var listaAtivos = repositorioAtivos.ObterTodos();
             if (listaAtivos.Count() == 0)
             {
@@ -69,6 +65,38 @@ void Menu() // Retirada de chamadas desnecessárias do método dentro dele mesmo
             Thread.Sleep(5000);
             break;
         case 3:
+            Console.Clear();
+            // Solicitar entrada do BP para o usuário
+            Console.Write("Insira o BP do ativo que deverá ser enviado para manutenção: ");
+            string bpManutencao = Console.ReadLine();
+            // Chamar o método ObterPorBP() para encontrar o ativo em específico na memória
+            var ativoEspecifico = repositorioAtivos.ObterPorBP(bpManutencao);
+            // Se o ativo NÃO for encontrado (retornar nulo), exibir uma mensagem em vermelho ou amarelo dizendo: "Ativo com BP informado não encontrado."
+            if (ativoEspecifico == null)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Ativo com BP informado não encontrado");
+                Console.ResetColor();
+                Console.ReadKey();
+                break;
+            }
+            // Se o ativo FOR encontrado, lembre-se de utilizar try-catch por conta da exceção que faz a mensuração do Status do ativo. Funcionando de forma semelhante ao Case 1.
+            try
+            {
+                ativoEspecifico.ColocarEmManutencao();
+                Console.WriteLine("Ativo enviado para manutenção com sucesso.");
+            }
+            catch (InvalidOperationException ex)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"Erro de operação: {ex.Message}");
+                Console.ResetColor();
+                Console.ReadKey();
+            }   
+            Console.WriteLine("Encerrando função e retornando ao menu.");
+            Thread.Sleep(5000);
+            break;
+        case 4:
             Console.WriteLine("Encerrando aplicação...");
             Thread.Sleep(5000);
             Environment.Exit(0);
@@ -84,14 +112,3 @@ while (ok)
 {
     Menu();
 }
-
-// Opção 1 da Aplicação, Cadastrar Ativo:
-//  Solicitar entrada de Nome e BP para o usuário
-//  Instanciar um Objeto da Classe Asset passando os dados de entrada utilizados
-//  Usar o método Adicionar
-//  UTILIZAR TRATAMENTO DE ERROS COM TRY-CATCH
-
-// Opção 2 da Aplicação, Listar Ativos
-//  Usar o Método ObterTodos()
-//  Utilizar um foreach para percorrer toda a lista e imprimir na tela os ativos contendo: Nome; BP; Status e Localização.
-//  Tratar o fluxo com mensagem amigável em caso de ativos não registrados
