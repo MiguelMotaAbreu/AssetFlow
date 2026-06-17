@@ -2,7 +2,7 @@ public class Asset
 {
     public Asset(string name, string bp)
     {
-        // Validações básicas para garantir que os campos essenciais não sejam nulos ou vazios
+        
         if (string.IsNullOrEmpty(name))
         {
             throw new ArgumentException("O nome do ativo não pode ser vazio.");
@@ -13,28 +13,26 @@ public class Asset
             throw new ArgumentException("O BP do ativo não pode ser vazio.");
         }
         Id = Guid.NewGuid();
-        Status = "Disponivel";
+        // Definir o valor inicial como Enum.Disponivel para padronizar assim que o objeto for instanciado
+        Status = StatusAtivo.Disponivel;
         Name = name;
         Location = "Estoque";
         BP = bp;
     }
     public Guid Id { get; private set; }
-    // O Id servirá para identificar os ativos somente dentro do sistema, para busca e consulta dos dados, será utilizado o BP (Bem Patrimonial)
     public string BP { get; private set; }
-    // O número do Bem Patrimonial, é o número de identificação do ativo, usado para identificação do ativo no mundo físico 
     public string Location { get; private set; }
-    // A localização do ativo, em que sala, por exemplo, ele se encontra
-    public string Status { get; private set; }
-    // O status do ativo, se ele está disponível, em manutenção, etc.
+    // Alterar o tipo da Propriedade Status para o Enum que iremos criar para padronizar as entradas nesta propriedade
+    public StatusAtivo Status { get; private set; }
+    
     public string Name { get; private set; }
-    // O nome do ativo, para facilitar a diferenciação entre ativos que estejam na mesma sala
-    //Método para colocar um ativo em manutenção
+    
     public void ColocarEmManutencao()
     {
-        //Verificação que impede o direcionamento de um ativo para manutenção se este estiver em uso.
-        if (Status == "Disponivel" || Status == "Quebrado")
+        // Trocar as comparações para Enum.Disponivel e Enum.Quebrado
+        if (Status == StatusAtivo.Disponivel || Status == StatusAtivo.Quebrado)
         {
-           Status = "EmManutencao"; 
+           Status = StatusAtivo.EmManutencao; 
         } else
         {
             throw new InvalidOperationException("O ativo não pode ser colocado em manutenção com este status.");
