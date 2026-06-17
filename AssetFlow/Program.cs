@@ -50,6 +50,7 @@ void Menu()
             {
                 Console.WriteLine("Lista de ativos vazia... Encerrando função e retornando ao menu.");
                 Thread.Sleep(5000);
+                break;
             }
             foreach(Asset ativoL in listaAtivos)
             {
