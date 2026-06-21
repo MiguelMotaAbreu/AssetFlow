@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="AssetFlow.ConsoleApp/AssetFlow.ConsoleApp.csproj" />
+  <Project Path="AssetFlow.Domain/AssetFlow.Domain.csproj" />
+  <Project Path="AssetFlow.Infrastructure/AssetFlow.Infrastructure.csproj" />
+</Solution>

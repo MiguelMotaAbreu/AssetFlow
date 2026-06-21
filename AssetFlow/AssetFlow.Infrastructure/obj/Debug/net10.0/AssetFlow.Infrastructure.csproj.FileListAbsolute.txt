@@ -1,0 +1,16 @@
+C:\dev\AssetFlow\AssetFlow.Infrastructure\bin\Debug\net10.0\AssetFlow.Infrastructure.deps.json
+C:\dev\AssetFlow\AssetFlow.Infrastructure\bin\Debug\net10.0\AssetFlow.Infrastructure.dll
+C:\dev\AssetFlow\AssetFlow.Infrastructure\bin\Debug\net10.0\AssetFlow.Infrastructure.pdb
+C:\dev\AssetFlow\AssetFlow.Infrastructure\bin\Debug\net10.0\AssetFlow.Domain.dll
+C:\dev\AssetFlow\AssetFlow.Infrastructure\bin\Debug\net10.0\AssetFlow.Domain.pdb
+C:\dev\AssetFlow\AssetFlow.Infrastructure\obj\Debug\net10.0\AssetFlow.Infrastructure.csproj.AssemblyReference.cache
+C:\dev\AssetFlow\AssetFlow.Infrastructure\obj\Debug\net10.0\AssetFlow.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\dev\AssetFlow\AssetFlow.Infrastructure\obj\Debug\net10.0\AssetFlow.Infrastructure.AssemblyInfoInputs.cache
+C:\dev\AssetFlow\AssetFlow.Infrastructure\obj\Debug\net10.0\AssetFlow.Infrastructure.AssemblyInfo.cs
+C:\dev\AssetFlow\AssetFlow.Infrastructure\obj\Debug\net10.0\AssetFlow.Infrastructure.csproj.CoreCompileInputs.cache
+C:\dev\AssetFlow\AssetFlow.Infrastructure\obj\Debug\net10.0\AssetFlow.Infrastructure.sourcelink.json
+C:\dev\AssetFlow\AssetFlow.Infrastructure\obj\Debug\net10.0\AssetFlo.E83033D1.Up2Date
+C:\dev\AssetFlow\AssetFlow.Infrastructure\obj\Debug\net10.0\AssetFlow.Infrastructure.dll
+C:\dev\AssetFlow\AssetFlow.Infrastructure\obj\Debug\net10.0\refint\AssetFlow.Infrastructure.dll
+C:\dev\AssetFlow\AssetFlow.Infrastructure\obj\Debug\net10.0\AssetFlow.Infrastructure.pdb
+C:\dev\AssetFlow\AssetFlow.Infrastructure\obj\Debug\net10.0\ref\AssetFlow.Infrastructure.dll

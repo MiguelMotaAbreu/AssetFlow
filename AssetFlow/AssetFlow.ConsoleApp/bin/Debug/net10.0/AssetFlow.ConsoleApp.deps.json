@@ -1,0 +1,56 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "AssetFlow.ConsoleApp/1.0.0": {
+        "dependencies": {
+          "AssetFlow.Domain": "1.0.0",
+          "AssetFlow.Infrastructure": "1.0.0"
+        },
+        "runtime": {
+          "AssetFlow.ConsoleApp.dll": {}
+        }
+      },
+      "AssetFlow.Domain/1.0.0": {
+        "runtime": {
+          "AssetFlow.Domain.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "AssetFlow.Infrastructure/1.0.0": {
+        "dependencies": {
+          "AssetFlow.Domain": "1.0.0"
+        },
+        "runtime": {
+          "AssetFlow.Infrastructure.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "AssetFlow.ConsoleApp/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "AssetFlow.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "AssetFlow.Infrastructure/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
