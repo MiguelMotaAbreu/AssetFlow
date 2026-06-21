@@ -13,7 +13,9 @@ void Menu()
     Console.WriteLine("2 - Listar Ativos");
     Console.WriteLine("3 - Colocar Ativo em Manutenção");
     Console.WriteLine("4 - Alocar Ativo para um colaborador");
-    Console.WriteLine("5 - Sair");
+    // Adição da opção que faz o uso do Método Devolver(). Esse método tem como objetivo tirar um computador de EmManutencao ou de retirar de algum colaborador.
+    Console.WriteLine("5 - Devolver Ativo para Estoque");
+    Console.WriteLine("6 - Sair");
     Console.WriteLine("-------------------------------");
 
     int.TryParse(Console.ReadLine(), out int respNum);
@@ -127,6 +129,39 @@ void Menu()
             Thread.Sleep(5000);
             break;
         case 5:
+            // Limpar a tela
+            Console.Clear();
+            // Solicitar entrada do BP do Ativo que será devolvido ao Estoque
+            Console.Write("Digite o BP do Ativo a ser devolvido para o Estoque: ");
+            string bpDevolvido = Console.ReadLine();
+            // Uso do Método ObterPorBP com a entrada feita pelo usuário
+            var ativoDevolver = repositorioAtivos.ObterPorBP(bpDevolvido);
+            //  Se o Ativo com BP informado NÃO for encontrado (ObterPorBP retornar nulo), utilizar mensagem de "Ativo com BP informado não encontrado" e break;
+            if (ativoDevolver == null)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Ativo com BP informado não encontrado");
+                Console.ResetColor();
+                Console.ReadKey();
+                break;
+            }
+            //  Se o Ativo FOR encontrado, usaar try-catch para capturar InvalidOperationException
+            try
+            {
+                ativoDevolver.Devolver();
+                Console.WriteLine("Ativo devolvido ao Estoque com sucesso.");
+            }
+            catch (InvalidOperationException ex)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"Erro de operação: {ex.Message}");
+                Console.ResetColor();
+                Console.ReadKey();
+            }
+            Console.WriteLine("Voltando ao menu...");
+            Thread.Sleep(5000);
+            break;
+        case 6:
             Console.WriteLine("Encerrando aplicação...");
             Thread.Sleep(5000);
             Environment.Exit(0);

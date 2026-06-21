@@ -48,21 +48,14 @@ public class Asset
             throw new InvalidOperationException("O ativo não pode ser colocado em manutenção com este status.");
         }
     }
-
-    // Criar Método Devolver()
     public void Devolver()
     {
-        //  O Método Devolver() será responsável por tirar um ativo do status de Manutenção ou de retirar o ativo de algum colaborador, portanto, não faz sentido permitir que um ativo seja devolvido se o Status dele for Disponivel
         if (Status == StatusAtivo.Disponivel)
         {
             throw new InvalidOperationException("Não é possível devolver um Ativo que já está em Estoque");
         }
-        //  O Método Devolver() irá alterar:
-        //      Status para Disponivel
         Status = StatusAtivo.Disponivel;
-        //      Location para "Estoque"
         Location = "Estoque";
-        //      AlocadoPara para null
         AlocadoPara = null;       
     }
 }
