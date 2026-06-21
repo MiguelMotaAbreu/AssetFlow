@@ -12,7 +12,6 @@ void Menu()
     Console.WriteLine("1 - Cadastrar Ativo");
     Console.WriteLine("2 - Listar Ativos");
     Console.WriteLine("3 - Colocar Ativo em Manutenção");
-    //Inclusão da opção de Alocação de um ativo para um colaborador, especificando nome e local
     Console.WriteLine("4 - Alocar Ativo para um colaborador");
     Console.WriteLine("5 - Sair");
     Console.WriteLine("-------------------------------");
@@ -59,7 +58,6 @@ void Menu()
                 Console.WriteLine($"Número de patrimônio do ativo: {ativoL.BP}");
                 Console.WriteLine($"Status do ativo: {ativoL.Status}");
                 Console.WriteLine($"Localização do ativo: {ativoL.Location}");
-                // Inserção do nome do colaborador que está com ativo, recomendado usar operador de coalescência nula "??" para especificar a mensagem que será escrita na tela em caso de retorno nulo (funciona de forma semelhante a um operador ternário).
                 Console.WriteLine($"Ativo alocado para: {ativoL.AlocadoPara ?? "Ninguém (Disponível no Estoque)"}");
                 Console.WriteLine("----------------------------------------------");
             }
@@ -97,14 +95,10 @@ void Menu()
             Thread.Sleep(5000);
             break;
         case 4:
-            // Limpar a tela
             Console.Clear();
-            // Solicitar o BP do ativo para alocar
             Console.Write("Digite o BP do Ativo para ser alocado: ");
             string bpAlocar = Console.ReadLine();
-            // Buscar o ativo por meio do BP com ObterPorBP
             var ativoAlocar = repositorioAtivos.ObterPorBP(bpAlocar);
-            // Se nulo, retorna "ativo não encontrado" em vermelho e usa o break para voltar ao menu
             if ( ativoAlocar == null)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -113,12 +107,10 @@ void Menu()
                 Console.ReadKey();
                 break;
             }
-            //  Se encontrado, pede duas novas entradas: nome do colaborador que receberá o ativo e novo local do ativo
             Console.Write("Digite o nome do colaborador que irá receber o Ativo: ");
             string nomeColaborador = Console.ReadLine();
             Console.Write("Digite a nova localização do Ativo: ");
             string novaLocalizacao = Console.ReadLine();
-            //Lembre-se de utilizar try-catch por conta do uso de uma exception no Método Alocar()
             try
             {
                 ativoAlocar.Alocar(nomeColaborador, novaLocalizacao);

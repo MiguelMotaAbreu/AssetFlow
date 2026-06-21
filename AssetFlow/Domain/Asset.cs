@@ -23,27 +23,19 @@ public class Asset
     public string Location { get; private set; }
     public StatusAtivo Status { get; private set; }    
     public string Name { get; private set; }
-    // Criar Propriedade AlocadoPara que pode ser nula já que o ativo entra em estoque sem um dono definido
     public string? AlocadoPara { get; private set; }
-    // Criar Método Alocar() com parâmetros de nome do colaborador que passará a ser o dono honorário do ativo e a localização
     public void Alocar(string nomeColaborador, string novaLocalizacao)
     {
-        // Se qualquer um dos parâmetros forem entrados com valores nulos ou vazios, o Método deve disparar uma ArgumentException
         if (string.IsNullOrEmpty(nomeColaborador) || string.IsNullOrEmpty(novaLocalizacao))
         {
             throw new ArgumentException("É necessário informar quem irá receber o ativo e a nova localização dele.");
         }
-        // Um ativo só pode ser alocado se estiver com o status atual como StatusAtivo.Disponivel, se esse não for o caso, o Método deve disparar uma InvalidOperationException
         if (!(Status == StatusAtivo.Disponivel))
         {
             throw new InvalidOperationException("O ativo precisa estar disponível para ser alocado.");
         }
-        // Caso passe pelas duas validações:
-        // O Status deve mudar para StatusAtivo.Alocado
         Status = StatusAtivo.Alocado;
-        // Location passa ter o valor do parâmetro localização de Alocar()
         Location = novaLocalizacao;
-        // AlocadoPara deve passar a ter o valor do nome do colaborador que está como dono
         AlocadoPara = nomeColaborador;
     }
     public void ColocarEmManutencao()
@@ -55,5 +47,22 @@ public class Asset
         {
             throw new InvalidOperationException("O ativo não pode ser colocado em manutenção com este status.");
         }
+    }
+
+    // Criar Método Devolver()
+    public void Devolver()
+    {
+        //  O Método Devolver() será responsável por tirar um ativo do status de Manutenção ou de retirar o ativo de algum colaborador, portanto, não faz sentido permitir que um ativo seja devolvido se o Status dele for Disponivel
+        if (Status == StatusAtivo.Disponivel)
+        {
+            throw new InvalidOperationException("Não é possível devolver um Ativo que já está em Estoque");
+        }
+        //  O Método Devolver() irá alterar:
+        //      Status para Disponivel
+        Status = StatusAtivo.Disponivel;
+        //      Location para "Estoque"
+        Location = "Estoque";
+        //      AlocadoPara para null
+        AlocadoPara = null;       
     }
 }
