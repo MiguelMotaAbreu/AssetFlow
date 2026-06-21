@@ -12,8 +12,9 @@ void Menu()
     Console.WriteLine("1 - Cadastrar Ativo");
     Console.WriteLine("2 - Listar Ativos");
     Console.WriteLine("3 - Colocar Ativo em Manutenção");
-    Console.WriteLine("4 - Sair");
-    //Adicionar Opção de Envio Para Manutenção utilizando o metódo ColocarEmManutencao()
+    //Inclusão da opção de Alocação de um ativo para um colaborador, especificando nome e local
+    Console.WriteLine("4 - Alocar Ativo para um colaborador");
+    Console.WriteLine("5 - Sair");
     Console.WriteLine("-------------------------------");
 
     int.TryParse(Console.ReadLine(), out int respNum);
@@ -58,6 +59,8 @@ void Menu()
                 Console.WriteLine($"Número de patrimônio do ativo: {ativoL.BP}");
                 Console.WriteLine($"Status do ativo: {ativoL.Status}");
                 Console.WriteLine($"Localização do ativo: {ativoL.Location}");
+                // Inserção do nome do colaborador que está com ativo, recomendado usar operador de coalescência nula "??" para especificar a mensagem que será escrita na tela em caso de retorno nulo (funciona de forma semelhante a um operador ternário).
+                Console.WriteLine($"Ativo alocado para: {ativoL.AlocadoPara ?? "Ninguém (Disponível no Estoque)"}");
                 Console.WriteLine("----------------------------------------------");
             }
             Console.WriteLine("Lista impressa na tela com sucesso.");
@@ -67,12 +70,9 @@ void Menu()
             break;
         case 3:
             Console.Clear();
-            // Solicitar entrada do BP para o usuário
             Console.Write("Insira o BP do ativo que deverá ser enviado para manutenção: ");
             string bpManutencao = Console.ReadLine();
-            // Chamar o método ObterPorBP() para encontrar o ativo em específico na memória
             var ativoEspecifico = repositorioAtivos.ObterPorBP(bpManutencao);
-            // Se o ativo NÃO for encontrado (retornar nulo), exibir uma mensagem em vermelho ou amarelo dizendo: "Ativo com BP informado não encontrado."
             if (ativoEspecifico == null)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -81,7 +81,6 @@ void Menu()
                 Console.ReadKey();
                 break;
             }
-            // Se o ativo FOR encontrado, lembre-se de utilizar try-catch por conta da exceção que faz a mensuração do Status do ativo. Funcionando de forma semelhante ao Case 1.
             try
             {
                 ativoEspecifico.ColocarEmManutencao();
@@ -98,6 +97,44 @@ void Menu()
             Thread.Sleep(5000);
             break;
         case 4:
+            // Limpar a tela
+            Console.Clear();
+            // Solicitar o BP do ativo para alocar
+            Console.Write("Digite o BP do Ativo para ser alocado: ");
+            string bpAlocar = Console.ReadLine();
+            // Buscar o ativo por meio do BP com ObterPorBP
+            var ativoAlocar = repositorioAtivos.ObterPorBP(bpAlocar);
+            // Se nulo, retorna "ativo não encontrado" em vermelho e usa o break para voltar ao menu
+            if ( ativoAlocar == null)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Ativo com BP informado não encontrado");
+                Console.ResetColor();
+                Console.ReadKey();
+                break;
+            }
+            //  Se encontrado, pede duas novas entradas: nome do colaborador que receberá o ativo e novo local do ativo
+            Console.Write("Digite o nome do colaborador que irá receber o Ativo: ");
+            string nomeColaborador = Console.ReadLine();
+            Console.Write("Digite a nova localização do Ativo: ");
+            string novaLocalizacao = Console.ReadLine();
+            //Lembre-se de utilizar try-catch por conta do uso de uma exception no Método Alocar()
+            try
+            {
+                ativoAlocar.Alocar(nomeColaborador, novaLocalizacao);
+                Console.WriteLine($"Ativo alocado com sucesso para {nomeColaborador} em {novaLocalizacao}");
+            }
+            catch (Exception ex)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"Erro de operação: {ex.Message}");
+                Console.ResetColor();
+                Console.ReadKey();
+            }
+            Console.WriteLine("Voltando ao menu...");
+            Thread.Sleep(5000);
+            break;
+        case 5:
             Console.WriteLine("Encerrando aplicação...");
             Thread.Sleep(5000);
             Environment.Exit(0);
