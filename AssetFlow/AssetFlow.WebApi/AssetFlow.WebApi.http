@@ -1,0 +1,6 @@
+@AssetFlow.WebApi_HostAddress = http://localhost:5222
+
+GET {{AssetFlow.WebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

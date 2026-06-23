@@ -2,4 +2,5 @@
   <Project Path="AssetFlow.ConsoleApp/AssetFlow.ConsoleApp.csproj" />
   <Project Path="AssetFlow.Domain/AssetFlow.Domain.csproj" />
   <Project Path="AssetFlow.Infrastructure/AssetFlow.Infrastructure.csproj" />
+  <Project Path="AssetFlow.WebApi/AssetFlow.WebApi.csproj" />
 </Solution>

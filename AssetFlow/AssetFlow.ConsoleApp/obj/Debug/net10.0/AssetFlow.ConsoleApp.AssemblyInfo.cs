@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AssetFlow.ConsoleApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8e15f0c26d2cba0fe855df2955cdc827e9c70ae4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b157c4b3de71ee466520907bd6b8db07dcb7deeb")]
 [assembly: System.Reflection.AssemblyProductAttribute("AssetFlow.ConsoleApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AssetFlow.ConsoleApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
