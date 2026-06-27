@@ -48,7 +48,7 @@ app.MapPut("/api/ativos/{bp}/manutencao", (string bp, IAssetRepository assetRepo
    }   
 });
 
-app.MapPut("/api/ativos/{bp}/alocar", (string bp, string nomeColaborador, string novaLocalizacao, IAssetRepository assetRepository) =>
+app.MapPut("/api/ativos/{bp}/alocar", (string bp, AssetAllocateRequest assetAllocate, IAssetRepository assetRepository) =>
 {
    var specAsset = assetRepository.ObterPorBP(bp);
 
@@ -59,7 +59,7 @@ app.MapPut("/api/ativos/{bp}/alocar", (string bp, string nomeColaborador, string
 
    try
    {
-     specAsset.Alocar(nomeColaborador, novaLocalizacao);
+     specAsset.Alocar(assetAllocate.nomeColaborador, assetAllocate.novaLocalizacao);
      return Results.Ok(); 
    }
    catch (Exception ex) // Escolha de exception genérica para abranger as duas possíveis exceções (InvalidOperation e Argument) em um catch apenas
@@ -90,3 +90,4 @@ app.MapPut("/api/ativos/{bp}/devolver", (string bp, IAssetRepository assetReposi
 
 app.Run();
 public record AssetCreateRequest(string Name, string BP);
+public record AssetAllocateRequest(string nomeColaborador, string novaLocalizacao);
