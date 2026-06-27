@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AssetFlow.WebApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+beefc47e33c18bdd11065db9c1427cb024a239cf")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f918270cbe427622c0e5ddff644d5a2111801c6e")]
 [assembly: System.Reflection.AssemblyProductAttribute("AssetFlow.WebApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AssetFlow.WebApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
